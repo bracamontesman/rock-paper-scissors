@@ -1,4 +1,4 @@
-let getComputerChoice = function() {
+function getComputerChoice() {
     let computerIndex = Math.floor(Math.random() * 3);
     let computerGame;
     if (computerIndex === 0) {
@@ -8,7 +8,18 @@ let getComputerChoice = function() {
     } else {
         computerGame = "scissors";
     }
+	console.log(computerGame);
     return computerGame;
 }
 
-console.log(getComputerChoice());
+function getUserChoice() {
+	let userIndex = prompt("rock, paper or scissors?");
+	let userGame = userIndex.toLowerCase();
+	console.log(userGame);
+	return userGame;
+}
+
+getComputerChoice();
+getUserChoice();
+
+
