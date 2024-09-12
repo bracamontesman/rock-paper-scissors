@@ -37,14 +37,14 @@ function playRound(computer, user) {
 		case "rock":
 			switch (user) {
 				case "rock":
-					console.log("it's a tie!");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
 					break;
 				case "paper":
-					console.log("you win, as paper beats rock");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
 					userScore++;
 					break;
 				case "scissors":
-					console.log("you loose, as rock beats scissors");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
 					computerScore++;
 					break;
 			}
@@ -52,14 +52,14 @@ function playRound(computer, user) {
 		case "paper":
 			switch (user) {
 				case "rock":
-					console.log("you loose, as paper beats rock");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
 					computerScore++;
 					break;
 				case "paper":
-					console.log("it's a tie!");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
 					break;
 				case "scissors":
-					console.log("you win, as scissors beats paper");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
 					userScore++;
 					break;
 			}
@@ -67,15 +67,15 @@ function playRound(computer, user) {
 		case "scissors":
 			switch (user) {
 				case "rock":
-					console.log("you win, as rock beats scissors");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
 					userScore++;
 					break;
 				case "paper":
-					console.log("you loose, as scissors beats paper");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
 					computerScore++;
 					break;
 				case "scissors":
-					console.log("it's a tie!");
+					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
 					break;
 			}
 		break;
@@ -91,15 +91,15 @@ async function playGame() {
 		rounds++;
 	}
 	if (userScore > computerScore) {
-        console.log("you win the game!");
+        document.getElementById("final-result").innerText = "you win the game!";
     } else if (computerScore > userScore) {
-        console.log("computer wins the game!");
+        document.getElementById("final-result").innerText = "computer wins the game!";
     } else {
-		console.log("it's a tie");
-	}
-	console.log("final Scores:");
-	console.log("user Score:", userScore);
-	console.log("computer Score:", computerScore);
+        document.getElementById("final-result").innerText = "it's a tie!";
+    }
+	document.getElementById("scores").innerText = `final scores:
+	user score: ${userScore}
+	computer score: ${computerScore}`;
 }
 
 playGame();
