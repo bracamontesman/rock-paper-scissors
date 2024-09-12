@@ -2,16 +2,8 @@ let computerScore = 0;
 let userScore = 0;
 
 function getComputerChoice() {
-    let computerIndex = Math.floor(Math.random() * 3);
-    let computerGame;
-    if (computerIndex === 0) {
-        computerGame = "rock";
-    } else if (computerIndex === 1) {
-        computerGame = "paper";
-    } else {
-        computerGame = "scissors";
-    }
-    return computerGame;
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * 3)];
 }
 
 function getUserChoice() {
