@@ -7,20 +7,14 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-	return new Promise( (resolve) => {
+	return new Promise((resolve) => {
 		const rock = document.getElementById("rock-btn");
 		const paper = document.getElementById("paper-btn");
 		const scissors = document.getElementById("scissors-btn");
 	
-		rock.addEventListener("click", () => {
-			resolve("rock");
-		});
-		paper.addEventListener("click", () => {
-			resolve("paper");
-		});
-		scissors.addEventListener("click", () => {
-			resolve("scissors");
-		});
+		rock.addEventListener("click", () => resolve("rock"));
+		paper.addEventListener("click", () => resolve("paper"));
+		scissors.addEventListener("click", () => resolve("scissors"));
 	});
 }
 
