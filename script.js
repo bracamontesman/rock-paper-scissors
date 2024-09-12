@@ -15,10 +15,21 @@ function getComputerChoice() {
 }
 
 function getUserChoice() {
-	let userIndex = prompt("rock, paper or scissors?");
-	let userGame = userIndex.toLowerCase();
-	console.log("user chooses:", userGame);
-	return userGame;
+	return new Promise( (resolve) => {
+		const rock = document.getElementById("rock-btn");
+		const paper = document.getElementById("paper-btn");
+		const scissors = document.getElementById("scissors-btn");
+	
+		rock.addEventListener("click", () => {
+			resolve("rock");
+		});
+		paper.addEventListener("click", () => {
+			resolve("paper");
+		});
+		scissors.addEventListener("click", () => {
+			resolve("scissors");
+		});
+	});
 }
 
 function playRound(computer, user) {
@@ -71,21 +82,24 @@ function playRound(computer, user) {
 	}
 }
 
-function playGame() {
-	while (userScore < 5 && computerScore < 5) {
+async function playGame() {
+	let rounds = 0;
+	while (rounds < 5) {
 		const computerSays = getComputerChoice();
-		const userSays = getUserChoice();
+		const userSays = await getUserChoice();
 		playRound(computerSays, userSays);
+		rounds++;
 	}
-	if (userScore === 5) {
+	if (userScore > computerScore) {
         console.log("you win the game!");
-    } else if (computerScore === 5) {
+    } else if (computerScore > userScore) {
         console.log("computer wins the game!");
-    }
+    } else {
+		console.log("it's a tie");
+	}
+	console.log("final Scores:");
+	console.log("user Score:", userScore);
+	console.log("computer Score:", computerScore);
 }
 
 playGame();
-
-console.log("final Scores:");
-console.log("user Score:", userScore);
-console.log("computer Score:", computerScore);
