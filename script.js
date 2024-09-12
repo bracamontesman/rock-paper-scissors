@@ -46,18 +46,20 @@ async function playGame() {
         playRound(computerSays, userSays);
         rounds++;
     }
-    // after the game ends, clear the monitors and show the final scores and result
-    document.getElementById("user-monitor").innerText = "";
-    document.getElementById("computer-monitor").innerText = "";
-	document.getElementById("scores").innerText = `final scores:\nuser: ${userScore}\ncomputer: ${computerScore}\nties: ${tieScore}`;
+    setTimeout(() => {
+        document.getElementById("user-monitor").innerText = "";
+        document.getElementById("computer-monitor").innerText = "";
+        document.getElementById("scores").innerText = `final scores:\nuser score: ${userScore}\ncomputer score: ${computerScore}\nties: ${tieScore}`;
 
-    if (userScore > computerScore) {
-        document.getElementById("final-result").innerText = "you win the game!";
-    } else if (computerScore > userScore) {
-        document.getElementById("final-result").innerText = "computer wins the game!";
-    } else {
-        document.getElementById("final-result").innerText = "it's a tie!";
-    }
+        if (userScore > computerScore) {
+            document.getElementById("final-result").innerText = "you win the game!";
+        } else if (computerScore > userScore) {
+            document.getElementById("final-result").innerText = "computer wins the game!";
+        } else {
+            document.getElementById("final-result").innerText = "it's a tie!";
+        }
+
+    }, 2000);
 }
 
 function resetGame() {
