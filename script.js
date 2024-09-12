@@ -1,6 +1,7 @@
 let computerScore = 0;
 let userScore = 0;
 let tieScore = 0;
+let rounds = 0;
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
@@ -39,7 +40,6 @@ function playRound(computer, user) {
 }
 
 async function playGame() {
-    let rounds = 0;
     while (rounds < 5) {
         const computerSays = getComputerChoice();
         const userSays = await getUserChoice();
@@ -59,5 +59,21 @@ async function playGame() {
         document.getElementById("final-result").innerText = "it's a tie!";
     }
 }
+
+function resetGame() {
+    computerScore = 0;
+    userScore = 0;
+	tieScore = 0;
+    rounds = 0;
+
+    document.getElementById("user-monitor").innerText = "";
+    document.getElementById("computer-monitor").innerText = "";
+    document.getElementById("scores").innerText = "";
+    document.getElementById("final-result").innerText = "";
+
+    playGame();
+}
+
+document.getElementById("reset-btn").addEventListener("click", resetGame);
 
 playGame();
