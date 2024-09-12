@@ -1,5 +1,6 @@
 let computerScore = 0;
 let userScore = 0;
+let tieScore = 0;
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"];
@@ -19,53 +20,22 @@ function getUserChoice() {
 }
 
 function playRound(computer, user) {
-	switch (computer) {
-		case "rock":
-			switch (user) {
-				case "rock":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
-					break;
-				case "paper":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
-					userScore++;
-					break;
-				case "scissors":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
-					computerScore++;
-					break;
-			}
-		break;
-		case "paper":
-			switch (user) {
-				case "rock":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
-					computerScore++;
-					break;
-				case "paper":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
-					break;
-				case "scissors":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
-					userScore++;
-					break;
-			}
-		break;
-		case "scissors":
-			switch (user) {
-				case "rock":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you win" 
-					userScore++;
-					break;
-				case "paper":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": you lose" 
-					computerScore++;
-					break;
-				case "scissors":
-					document.getElementById("screen").innerText = "the computer chose " + computer + ": it's a tie"
-					break;
-			}
-		break;
-	}
+    document.getElementById("user-monitor").innerText = `you chose: ${user}`;
+    document.getElementById("computer-monitor").innerText = `the computer chose: ${computer}`;
+    if (computer === user) {
+        document.getElementById("scores").innerText = "it's a tie!";
+		tieScore++;
+    } else if (
+        (user === "rock" && computer === "scissors") ||
+        (user === "paper" && computer === "rock") ||
+        (user === "scissors" && computer === "paper")
+    ) {
+        document.getElementById("scores").innerText = "you win this round!";
+        userScore++;
+    } else {
+        document.getElementById("scores").innerText = "you lose this round!";
+        computerScore++;
+    }
 }
 
 async function playGame() {
