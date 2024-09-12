@@ -39,23 +39,25 @@ function playRound(computer, user) {
 }
 
 async function playGame() {
-	let rounds = 0;
-	while (rounds < 5) {
-		const computerSays = getComputerChoice();
-		const userSays = await getUserChoice();
-		playRound(computerSays, userSays);
-		rounds++;
-	}
-	if (userScore > computerScore) {
+    let rounds = 0;
+    while (rounds < 5) {
+        const computerSays = getComputerChoice();
+        const userSays = await getUserChoice();
+        playRound(computerSays, userSays);
+        rounds++;
+    }
+    // after the game ends, clear the monitors and show the final scores and result
+    document.getElementById("user-monitor").innerText = "";
+    document.getElementById("computer-monitor").innerText = "";
+	document.getElementById("scores").innerText = `final scores:\nuser score: ${userScore}\ncomputer score: ${computerScore}\nties: ${tieScore}`;
+
+    if (userScore > computerScore) {
         document.getElementById("final-result").innerText = "you win the game!";
     } else if (computerScore > userScore) {
         document.getElementById("final-result").innerText = "computer wins the game!";
     } else {
         document.getElementById("final-result").innerText = "it's a tie!";
     }
-	document.getElementById("scores").innerText = `final scores:
-	user score: ${userScore}
-	computer score: ${computerScore}`;
 }
 
 playGame();
