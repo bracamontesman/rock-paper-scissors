@@ -49,7 +49,7 @@ async function playGame() {
     // after the game ends, clear the monitors and show the final scores and result
     document.getElementById("user-monitor").innerText = "";
     document.getElementById("computer-monitor").innerText = "";
-	document.getElementById("scores").innerText = `final scores:\nuser score: ${userScore}\ncomputer score: ${computerScore}\nties: ${tieScore}`;
+	document.getElementById("scores").innerText = `final scores:\nuser: ${userScore}\ncomputer: ${computerScore}\nties: ${tieScore}`;
 
     if (userScore > computerScore) {
         document.getElementById("final-result").innerText = "you win the game!";
